@@ -1,0 +1,11 @@
+udo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t quichar/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true quichar/docker-react npm run test
